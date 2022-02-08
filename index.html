@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
+		<script src="./Vue.js"></script>
+		<!-- <script src="./Axios.js"></script> -->
+		<script src="./Plotly.js"></script>
+		<!-- <script src="./Danfo.js"></script> -->
+		<script src="./Tabulator.js"></script>
+		<link href="./Tabulator.css" rel="stylesheet">
+		<link href="./column_splitter.css" rel="stylesheet">
+
+		<title>Vue example </title>
+	</head>
+	<body>
+		<div id="Nepse">
+			 
+			 Nepal Stock Exchange Real Time Data     {{ global_time }}
+
+			 <p style="float:right;"> <input type="file" v-on:change="read_portfolio_file"> 
+					<select id="watch_list_menu" v-model="watch_scrip_selected">
+						<option v-for="scrip in scrips" v-bind:value="scrip"> {{ scrip }} </option>
+					</select> 
+					<button v-on:click="watch_scrip_added"> Add </button>
+					<button v-on:click="watch_scrip_removed"> Del </button>
+			</p>
+			<br>
+			<span v-bind:title="message">
+				<button v-on:click="click_btn"> Update  </button>
+				{{ time }}
+			</span>
+			<!-- <span v-if="seen"> visible </span>
+
+			<input v-model="input_box" placeholder="type your text here"></input> -->
+			<!-- <ul v-for="trade_detail in trade_details">
+				<li> The price of {{ trade_detail['symbol'] }} is {{ trade_detail['lastTradedPrice'] }}</li>
+			</ul> -->
+			<br>
+			<br>
+			<div class="column_wrapper">
+				<div id="plot_space" > </div>
+				<div class="column_wrapper">
+					<div id="sub_indices"></div>	
+					<div id="watch_list_table"></div>
+					</div>
+			</div>
+			
+			{{ nepse_index }} &nbsp; &nbsp; &nbsp; &nbsp;{{ nepse_summary }}
+			<br>
+			<br>
+
+			
+			<div class="column_wrapper">	
+				<div class="column_wrapper">
+					<center v-if="gainers_visibility"> Gainers </center> <div id="gainers"></div>
+					<center v-if="losers_visibility"> Losers </center> <div id="losers"> </div>
+				</div>
+				<div class="column_wrapper">
+					<center v-if="demand_supply_visibility"> Supply </center> <div id="supply"></div>
+					<center v-if="demand_supply_visibility"> Demand </center> <div id="demand"> </div>
+				</div>
+			</div>
+
+			<br>
+			<br>
+
+
+			<div> <center v-if="sector_wise_price_visibility"> Sectorwise Price List </center>
+				
+				<div class="column_wrapper">
+					<div v-for="nepse_sector in nepse_sectors" v-bind:id="nepse_sector"></div>
+				</div>
+				
+				
+			</div> 
+			
+			<br>
+			<br>
+			<br>
+
+			<center v-if="port_folio_visibility"> Portfolio Information </center>
+			<div id="nepse_portfolio"></div>
+			
+			<br>
+			<br>
+		</div>
+		<br>
+		<br>
+		
+
+	<script src="./application.js"></script>
+	</body>
+</html>

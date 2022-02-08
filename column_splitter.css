@@ -1,0 +1,11 @@
+.column_wrapper {
+			  column-count: 2;
+			  column-gap: 20px;
+			  column-rule: 4px dotted rgb(79, 185, 227);
+}
+
+.column_wrapper_2 {
+			  column-count: 2;
+			  column-gap: 20px;
+			  column-rule: 4px dotted rgb(79, 185, 227);
+}
